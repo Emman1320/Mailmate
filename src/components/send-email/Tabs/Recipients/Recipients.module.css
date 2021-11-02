@@ -1,0 +1,76 @@
+.recipientsWrapper {
+  margin: auto;
+  margin-top: 1.9em;
+  height: 25.5em;
+  width: 53em;
+  border: 2px solid #5e5e5e;
+  overflow-x: hidden;
+}
+
+.recipients {
+  background-color: white;
+  width: 100%;
+  padding-top: 1em;
+  border-collapse: collapse;
+}
+
+.recipients td,
+.recipients th {
+  border: 1px solid #ddd;
+  padding: 0px 8px;
+}
+
+.recipients tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.recipients tr:hover {
+  background-color: #ddd;
+}
+
+.recipients th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(0, 211, 148);
+  color: white;
+}
+
+/* width */
+.recipientsWrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.recipientsWrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.recipientsWrapper::-webkit-scrollbar-thumb {
+  background: #5e5e5e;
+}
+
+/* Handle on hover */
+.recipientsWrapper::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.header th {
+  position: sticky;
+  border-top: 0px solid #ddd;
+  top: 0;
+  z-index: 100;
+}
+.header th:nth-child(4) {
+  /* padding: 0px 1em; */
+  width: 4em;
+}
+
+.center {
+  text-align: center;
+  align-content: center;
+  height: 100%;
+  display: grid;
+}
+

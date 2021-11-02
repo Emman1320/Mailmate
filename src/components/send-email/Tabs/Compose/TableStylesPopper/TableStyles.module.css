@@ -1,0 +1,71 @@
+.tableContainer {
+  width: 7em !important;
+  height: 5em;
+}
+
+.table1 .header {
+  background: black;
+}
+
+.table1 .row {
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.table2 .header {
+  background: hsl(209deg 59% 60%);
+}
+
+.table2 .row {
+  border-bottom: 2px solid hsl(209deg 59% 60%);
+  border-left: 2px solid hsl(209deg 59% 60%);
+  border-right: 2px solid hsl(209deg 59% 60%);
+}
+
+.table3 .header {
+  background: hsl(24deg 84% 56%);
+}
+
+.table3 .row {
+  border-bottom: 2px solid hsl(24deg 84% 56%);
+  border-left: 2px solid hsl(24deg 84% 56%);
+  border-right: 2px solid hsl(24deg 84% 56%);
+}
+
+.table4 .header {
+  background: hsl(45deg 100% 50%);
+}
+
+.table4 .row {
+  border-bottom: 2px solid hsl(45deg 100% 50%);
+  border-left: 2px solid hsl(45deg 100% 50%);
+  border-right: 2px solid hsl(45deg 100% 50%);
+}
+
+.table5 .header {
+  background: rgb(0, 211, 148);
+}
+
+.table5 .row {
+  border-bottom: 2px solid rgb(0, 211, 148);
+  border-left: 2px solid rgb(0, 211, 148);
+  border-right: 2px solid rgb(0, 211, 148);
+}
+.contentContainer {
+  height: 100%;
+}
+.header .content {
+  background: white;
+  width: 10px;
+  height: 1.5px;
+}
+.content {
+  background: black;
+  width: 10px;
+  height: 1.5px;
+} 
+
+.row:nth-child(even) .contentContainer .content{
+  height: 1.9px;
+} 

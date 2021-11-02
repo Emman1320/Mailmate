@@ -1,0 +1,35 @@
+.draftItem {
+  width: 12em;
+  height: 13em;
+  margin: 0 1em !important;
+  font-family: "Urbanist", sans-serif !important;
+  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+    0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+.draftItem > span {
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 100%;
+}
+.draftItem:hover {
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%) !important;
+}
+.draftItem svg {
+  font-size: 10em;
+  color: #0000002b;
+}
+.draftItem div:hover,
+.draftItem span:hover,
+.draftItem svg:hover {
+  box-shadow: none;
+}
+.draftItem > span > div:nth-child(2) > div {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 8em;
+}
+.draftItem > span > div:nth-child(1) {
+    font-weight: 700;
+}

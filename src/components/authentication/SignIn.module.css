@@ -1,0 +1,144 @@
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 211, 148);
+}
+
+.logo {
+  padding: 1em;
+  font-weight: 700;
+  font-size: 2em;
+  color: white;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.logo > div {
+  cursor: pointer;
+}
+
+.wrapper {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 32em;
+}
+
+.form {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 0 1em;
+  padding: 1em 2em;
+  border-radius: 5px;
+}
+
+.details > input {
+  height: 40px;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  padding: 0.4em;
+  background-color: white;
+  width: 98%;
+}
+
+.details > input:focus {
+  background-color: rgba(0, 211, 148, 0.096);
+}
+
+.form > h2 {
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 1em;
+  font-size: 2.3em;
+}
+
+.actions h3 {
+  margin: 0;
+}
+
+.actions {
+  padding: 1em;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.wrapper > p {
+  text-align: center;
+  color: rgb(255, 255, 255);
+  margin-top: 1.9em;
+  cursor: pointer;
+}
+
+.wrapper > p:hover {
+  color: blue;
+  text-decoration: underline;
+  transition: all 0.1s ease-in-out;
+}
+
+.invalid {
+  border: 2px solid #b40e0e;
+  margin-bottom: 0;
+  background-color: #fddddd;
+}
+
+.invalid:focus {
+  border-color: #ff8800;
+  background-color: #fbe8d2;
+}
+
+.error-text {
+  color: #b40e0e;
+  margin: 0;
+  font-weight: bold;
+}
+
+.margin-top {
+  padding-bottom: 1em;
+  padding-top: 2em;
+}
+
+.shrink {
+  font-size: 0.9em;
+  max-width: 34em;
+}
+
+.displayFlex {
+  display: flex;
+}
+.signup {
+  text-align: center;
+  color: #2100ee;
+  cursor: pointer;
+  margin-top: 2em;
+}
+@media (max-width: 1367px) {
+  .form {
+    font-size: 0.9em;
+  }
+
+  .wrapper > p {
+    margin-top: 1.4em;
+  }
+
+  .logo {
+    padding: 0.6em;
+  }
+
+  .margin-top {
+    padding-bottom: 1em;
+    padding-top: 1.2em;
+  }
+  .form > h2 {
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 0.7em;
+    font-size: 2.3em;
+  }
+
+  .details label {
+    font-size: 1.1em;
+  }
+  .shrink {
+    font-size: 1em;
+  }
+}

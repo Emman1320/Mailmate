@@ -1,0 +1,89 @@
+.uploadFile {
+  padding: 1.5em 3em;
+}
+
+.uploadFile > label {
+  font-size: 1.3em;
+}
+
+.uploadFile__uploadWrapper {
+  background-color: rgb(0, 211, 148);
+  height: 14em;
+  margin-top: 1em;
+}
+
+.uploadFile__uploadContainer {
+  border: 2px solid black;
+  height: 100%;
+  cursor: pointer;
+  border-style: dashed;
+  display: flex;
+  justify-content: center;
+}
+
+.uploadFile__chooseFile input {
+  margin-top: 1em;
+}
+.uploadFile__chooseFile input + div {
+  margin-top: 0.6em;
+}
+
+.uploadFile__excelIcon {
+  margin-top: 0.7em;
+  display: flex;
+  width: 100%;
+}
+.uploadFile__excelIcon svg {
+  margin: auto;
+}
+
+.uploadFile__chooseFileDesc {
+  text-align: center;
+  margin-bottom: 7px;
+}
+
+.uploadFile__uploadWrapper input::file-selector-button {
+  width: 11em;
+  height: 2.5em;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Urbanist", sans-serif;
+  color: rgb(51, 51, 51);
+  background-color: white;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  
+}
+
+.uploadFile__uploadWrapper input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+  transition: all 0.1s ease-in-out;
+}
+
+.uploadFile__uploadWrapper input::file-selector-button:active {
+  background-color: rgb(214, 214, 214);
+  transition: all 0.2s ease-in-out;
+}
+
+.uploadFile__uploadWrapper input {
+  width: 13.2em;
+}
+
+.marginTop {
+  margin-top: 1em;
+}
+
+.dropdown {
+  margin-left: 6em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 1em;
+  position: absolute;
+  bottom: 1em;
+}

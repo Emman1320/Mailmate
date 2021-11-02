@@ -1,0 +1,99 @@
+.container {
+  border: 18px solid rgba(170, 243, 219, 0.383);
+  border-radius: 50%;
+  height: 10em;
+  width: 160px;
+  display: flex;
+  margin-bottom: -96px;
+}
+
+.wrapper {
+  display: flex;
+  overflow: hidden;
+  height: 14em;
+  width: 80px;
+  flex-direction: column;
+}
+
+.fill-wrapper {
+  height: 160px;
+  width: 80px;
+  overflow: hidden;
+}
+
+.fill {
+  border: 18px solid rgb(4, 219, 155);
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+}
+
+.fill-container {
+  position: relative;
+  top: -63px;
+  left: 0px;
+  height: 160px;
+  width: 80px;
+  transform-origin: right center;
+  display: flex;
+  /* overflow: hidden; */
+  /* transform: rotate(-45deg); */
+}
+.fill-container2 {
+  position: relative;
+  top: -160px;
+  left: 0px;
+  height: 160px;
+  width: 80px;
+  transform-origin: right center;
+  display: flex;
+  /* transform: rotate(180deg); */
+}
+.progressPercent {
+  position: relative;
+  right: -63px;
+  top: -92px;
+  /* text-align: center; */
+  font-size: 1.3em;
+  color: rgba(0, 15, 11, 0.699);
+}
+
+.width {
+  width: 160px;
+}
+.width .fill-container {
+  top: 0px;
+  left: 0px;
+}
+.halfContainer {
+  border: 18px solid rgb(170, 243, 219, 0.383);
+  border-radius: 50%;
+  height: 160px;
+  width: 160px;
+  display: flex;
+}
+.halfContainerWrapper {
+  margin-bottom: -160px;
+  height: 160px;
+  width: 80px;
+  transform: rotate(180deg);
+  transform-origin: right center;
+  overflow: hidden;
+}
+.progressBar {
+  width: 160px;
+  height: 160px;
+  transform: rotate(180deg);
+}
+
+/* .progressBarAnimation {
+  animation: progress-bar 1s ease-in-out;
+}
+.progressBarAnimation_2 {
+  animation: progress-bar 1s ease-in-out;
+}
+@keyframes progress-bar {
+  0% {
+    transform: rotate(180deg);
+  }
+} */

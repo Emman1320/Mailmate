@@ -1,0 +1,33 @@
+.dashboard {
+  background: rgb(250, 250, 250);
+  width: 100%;
+  height: 15em;
+  padding: 1em;
+  padding-left: 4em;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.progressReport {
+  padding: 3em;
+  padding-left: 5em;
+}
+
+.progressReportList {
+  margin: 1em 0;
+  color: rgba(0, 15, 11, 0.699);
+}
+
+.progressReportList div {
+  margin: 1em 0;
+}
+
+.progressReportList div:nth-child(1) {
+  font-weight: 600;
+  font-size: 1.2em;
+}
+
+.progressBarContainer {
+  width: 20%;
+}

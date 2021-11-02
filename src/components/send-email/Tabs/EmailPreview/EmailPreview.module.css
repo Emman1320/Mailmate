@@ -1,0 +1,56 @@
+.emailContainer {
+  width: 80%;
+  margin-top: 2em;
+  overflow: hidden;
+  display: flex;
+}
+
+.emailContainer > div {
+  width: 100%;
+}
+
+.emailPreview {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 100%;
+  border: 1px solid #5e5e5e;
+}
+
+.toAddress {
+  padding: 10px;
+  border-bottom: 1px solid #5e5e5e;
+}
+
+.subject {
+  padding: 10px;
+  border-bottom: 1px solid #5e5e5e;
+  font-weight: 700;
+}
+
+.body {
+  padding: 10px;
+  height: 24em;
+  overflow-y: scroll;
+}
+
+.navigationButton button {
+  min-width: 40px;
+  min-height: 80px;
+  border: 1px solid #5e5e5e;
+}
+
+.linearProgress > div {
+  background-color: rgb(0, 211, 148) !important;
+}
+
+.center {
+  text-align: center;
+  align-content: center;
+  height: 100%;
+  display: grid;
+}

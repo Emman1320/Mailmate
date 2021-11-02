@@ -1,0 +1,21 @@
+.card {
+    width: 100%;
+    border: 1px solid #5e5e5e;
+  }
+  
+  .toAddress {
+    padding: 10px;
+    border-bottom: 1px solid #5e5e5e;
+  }
+  
+  .subject {
+    padding: 10px;
+    border-bottom: 1px solid #5e5e5e;
+    font-weight: 700;
+  }
+  
+  .body {
+    padding: 10px;
+    height: 24em;
+    overflow-y: scroll;
+  }

@@ -1,0 +1,46 @@
+.container {
+    width: 100%;
+}
+.circ {
+  stroke-dasharray: 130;
+  animation: circle-animation 1s ease-in-out;
+}
+
+.tick {
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  animation: tick-animation 1s 0.67s ease-out forwards;
+}
+
+.path {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10;
+}
+
+.svg{
+    height: 70px;
+    margin: 0 15px;
+}
+
+@keyframes tick-animation {
+  0% {
+    stroke-dashoffset: 50;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes circle-animation {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 130;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}

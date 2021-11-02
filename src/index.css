@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Urbanist', sans-serif;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root{
+  height: 100%;
+}
+
+textarea {
+  font-family: sans-serif;
+  font-size: 14px;
+}

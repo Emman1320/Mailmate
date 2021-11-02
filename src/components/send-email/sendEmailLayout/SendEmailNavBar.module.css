@@ -1,0 +1,20 @@
+.tabs > div > div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.tabs button {
+  font-family: "Urbanist", sans-serif !important;
+  text-decoration: none;
+  color: white;
+  opacity: 1;
+  width: 20%;
+}
+
+.tabs a {
+  width: 100%;
+}
+
+.navBar > div > div > span {
+  background-color: white;
+}

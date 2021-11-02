@@ -1,0 +1,42 @@
+.home {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar {
+  background-color: whitesmoke;
+  padding-top: 1em;
+  margin-top: 2px;
+  height: 125%;
+  width: 15em;
+}
+
+.sidebar a > div {
+  font-size: 1.2em;
+  color: #6c6c6c;
+  padding: 1em 0;
+  display: flex;
+  align-items: center;
+  padding-left: 1em;
+  cursor: pointer;
+}
+
+.sidebar a > div > span {
+  margin-left: 8px;
+}
+
+.sidebar a > div:hover {
+  transition: all 0.1s ease-in-out;
+  background-color: rgba(231, 231, 231, 0.7);
+}
+
+.main {
+  height: 100%;
+  width: 82.2%;
+  padding: 2em;
+}
+
+.sidebar .active {
+  background-color: rgba(231, 231, 231, 0.7);
+  color: rgb(0, 211, 148);
+}
