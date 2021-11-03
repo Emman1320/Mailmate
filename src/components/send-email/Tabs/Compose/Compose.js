@@ -133,38 +133,6 @@ const Compose = () => {
   const blurHandler = (event) => {
     setCaretPosition(event.target.selectionStart);
   };
-//   const saveDraftHandler =async () => { const response = await fetch(
-//     "http://localhost:5001/mail-mate/us-central1/api",
-//     {
-//       method: "GET",
-//       // body: JSON.stringify({
-//       //   draft: [
-//       //     {
-//       //       date: new Date(),
-//       //       fields: {
-//       //         primaryKey: "A",
-//       //         nameField: "B",
-//       //         emailField: "C",
-//       //       },
-//       //       neglectedEmails: [],
-//       //       subject: "Subject",
-//       //       body: "Body",
-//       //       footer: "",
-//       //       tableStyle: {
-//       //         background: "white",
-//       //         header: { border: "1px solid black", color: "black" },
-//       //         body: { border: "1px solid black", color: "black" },
-//       //       },
-//       //       showTable: false,
-//       //     },
-//       //   ],
-//       // }),
-//       // headers: { "Content-Type": "application/json" },
-//     }
-//   );
-//   console.log(userDraftsData.draft, data, user.email);
-//   dispatch(requestActions.saveData(userDraftsData.draft));
-// };
   return (
     <Fragment>
       <div className={classes.body}>
