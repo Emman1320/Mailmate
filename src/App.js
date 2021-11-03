@@ -15,19 +15,9 @@ import { userActions } from "./redux-store/user";
 
 function App() {
   const dispatch = useDispatch();
-  // window.onbeforeunload = (event) => {
-  //   const e = event || window.event;
-  //   e.preventDefault();
-    
-  //   if (e) {
-  //     e.returnValue = "";
-  //   }
-  //   return "";
-  // };
   const user = useSelector((state) => state.user.user);
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
-      // console.log(authUser);
       if (authUser) {
         dispatch(userActions.saveUser(authUser));
       } else {
@@ -35,48 +25,7 @@ function App() {
         return;
       }
     });
-    // if (user) {
-    //   const fetchDrafts = async () => {
-    //     const response = await fetch(
-    //       "http://localhost:5001/mail-mate/us-central1/api",
-    //       {
-    //         method: "GET",
-    //         // body: JSON.stringify({
-    //         //   draft: [
-    //         //     {
-    //         //       date: new Date(),
-    //         //       fields: {
-    //         //         primaryKey: "A",
-    //         //         nameField: "B",
-    //         //         emailField: "C",
-    //         //       },
-    //         //       neglectedEmails: [],
-    //         //       subject: "Subject",
-    //         //       body: "Body",
-    //         //       footer: "",
-    //         //       tableStyle: {
-    //         //         background: "white",
-    //         //         header: { border: "1px solid black", color: "black" },
-    //         //         body: { border: "1px solid black", color: "black" },
-    //         //       },
-    //         //       showTable: false,
-    //         //     },
-    //         //   ],
-    //         // }),
-    //         // headers: { "Content-Type": "application/json" },
-    //       }
-    //     );
-    //     const data = await response.json();
-    //     const userDraftsData = data.filter(
-    //       (dataItem) => dataItem.email === user.email
-    //     )[0];
-    //     dispatch(requestActions.saveData(userDraftsData.draft));
-    //   };
-    //   fetchDrafts().catch((error) => console.log(error));
-    // }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+   
   return (
     <Router>
       <Switch>
