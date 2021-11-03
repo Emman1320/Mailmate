@@ -199,9 +199,6 @@ const Compose = () => {
             ></TextareaAutosize>
           </div>
         </label>
-        {/* <div className={classes.draft}>
-          <Button >Save As Draft</Button>
-        </div> */}
       </div>
     </Fragment>
   );
