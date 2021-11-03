@@ -25,9 +25,10 @@ app.post("/send-email", (request, response) => {
   const accessTokenStatus = `${
     request ? "access token recievied" : "access token is not recievied"
   }`;
+  const data = request.body;
+  let createTransporter;
   try {
-    const data = request.body;
-    const createTransporter = () => {
+    createTransporter = () => {
       const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 465,
