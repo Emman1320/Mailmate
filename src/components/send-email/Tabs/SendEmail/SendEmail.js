@@ -25,7 +25,7 @@ const SendEmail = () => {
   const { signOut } = useGoogleLogout({
     scope: "https://mail.google.com/",
     clientId:
-      "159826717198-a6ujec4123jvtn3tg916733f8fjk2k67.apps.googleusercontent.com",
+      CLIENT_ID,
     cookiePolicy: "single_host_origin",
     onSuccess: { handleResponse },
   });
@@ -109,7 +109,6 @@ const SendEmail = () => {
       if (response.data.errorMessages.length === 0) {
         setIsOpen(true);
         setIsSuccess(true);
-        // history.replace("/send-email/upload-file");
       } else {
         setIsOpen(true);
         setIsSuccess(false);
@@ -137,7 +136,7 @@ const SendEmail = () => {
               icon=""
               className={classes.sendEmailButton}
               scope="https://mail.google.com/"
-              clientId="159826717198-a6ujec4123jvtn3tg916733f8fjk2k67.apps.googleusercontent.com"
+              clientId=CLIENT_ID
               buttonText="Send email"
               cookiePolicy={"single-host-orgin"}
               onSuccess={sendEmailResponseHandler}
