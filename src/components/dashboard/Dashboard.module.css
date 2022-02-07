@@ -9,25 +9,53 @@
   flex-direction: row;
 }
 
-.progressReport {
+.welcome {
+  margin: 1em 0;
+  color: rgba(0, 15, 11, 0.699);
   padding: 3em;
   padding-left: 5em;
 }
 
-.progressReportList {
-  margin: 1em 0;
-  color: rgba(0, 15, 11, 0.699);
-}
-
-.progressReportList div {
+.welcome div {
   margin: 1em 0;
 }
 
-.progressReportList div:nth-child(1) {
+.welcome div:nth-child(1) {
   font-weight: 600;
   font-size: 1.2em;
 }
+.h2 {
+  font-weight: bold;
+  font-size: 2.3em;
+  color: rgba(0, 15, 11, 0.699);
+  margin-top: 1em;
+}
+.excelImage {
+  display: flex;
+  justify-content: space-between;
+}
+.excelImage img {
+  object-fit: cover;
+  width: 38em;
+}
+.para {
+  margin: 1em 0 1em 0;
+  font-size: 20px;
+}
+.img {
+  object-fit: cover;
+  width: 100%;
+}
+.excelImage .para {
+  padding-left: 1em;
+}
+.para li {
+  margin-bottom: 10px;
+}
 
-.progressBarContainer {
-  width: 20%;
+.h3 {
+  font-weight: bold;
+  font-size: 2em;
+  color: rgba(0, 15, 11, 0.699);
+  margin-top: 1em;
 }

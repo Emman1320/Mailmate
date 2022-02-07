@@ -1,4 +1,4 @@
-import { Checkbox } from "@material-ui/core";
+import { Checkbox } from "@mui/material";
 import React, { useState } from "react";
 import { useData } from "../../../../store/data-context";
 import classes from "./Recipient.module.css";

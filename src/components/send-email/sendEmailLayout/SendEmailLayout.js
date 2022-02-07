@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 import TabPanel from "./TabPanel";
 import SendEmailNavBar from "./SendEmailNavBar";
-import Sender from "../Tabs/Sender/Sender";
+import UploadFile from "../Tabs/UploadFile/UploadFile";
 import Recipients from "../Tabs/Recipients/Recipients";
 import Compose from "../Tabs/Compose/Compose";
 import EmailPreview from "../Tabs/EmailPreview/EmailPreview";
@@ -50,7 +50,7 @@ const SendEmailLayout = (props) => {
         <Switch>
           <TabPanel value={value} index={value}>
             <Route path="/send-email/upload-file">
-              <Sender />
+              <UploadFile />
             </Route>
             <Route path="/send-email/recipients">
               <Recipients />

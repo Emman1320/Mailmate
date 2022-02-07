@@ -2,9 +2,6 @@ import { useData } from "../../../../../store/data-context";
 import classes from "./Table.module.css";
 
 const AddTable = (props) => {
-  function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
   const dataCtx = useData();
   const headerRow = dataCtx.data.Sheet1[0];
   const headerKeys = Object.keys(headerRow).filter(
@@ -18,7 +15,6 @@ const AddTable = (props) => {
           <tr>
             {headerKeys.map((key) => (
               <th
-                key={Math.random()}
                 style={{
                   background: `${dataCtx.tableStyle.background}`,
                   border: `${dataCtx.tableStyle.header.border}`,
@@ -31,27 +27,20 @@ const AddTable = (props) => {
           </tr>
         </thead>
         <tbody>
-          {
-            /* {props.recipient.map((row) => ( */
-            <tr key={Math.random()}>
+          {props.recipient.map((row) => (
+            <tr>
               {headerKeys.map((key) => (
                 <td
-                  key={Math.random()}
                   style={{
                     border: `${dataCtx.tableStyle.body.border}`,
                     color: `${dataCtx.tableStyle.body.color}`,
                   }}
                 >
-                  {"<<" + headerRow[key] + ">>"}
-                  <br />(
-                  {props.recipient.length > 1 && props.recipient[1][key]
-                    ? "Array "
-                    : ""}
-                  {capitalize(typeof props.recipient[0][key])})
+                  {row[key]}
                 </td>
               ))}
             </tr>
-          }
+          ))}
         </tbody>
       </table>
     </div>

@@ -25,7 +25,8 @@ function App() {
         return;
       }
     });
-   
+  }, []);
+
   return (
     <Router>
       <Switch>

@@ -27,7 +27,7 @@
   border: none;
   opacity: 1 !important;
   padding: 10px;
-  text-transform: uppercase;
+  text-transform: uppercase;    
   background-color: transparent !important;
   box-shadow: none !important;
   color: white !important;
@@ -49,4 +49,13 @@
   align-content: center;
   height: 100%;
   display: grid;
+}
+.circleProgress > div {
+  width: 200px !important;
+  height: 200px !important;
+}
+
+.progress {
+  padding: 5em;
+  padding-bottom: 1em;
 }

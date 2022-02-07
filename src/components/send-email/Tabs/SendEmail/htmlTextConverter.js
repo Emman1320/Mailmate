@@ -20,7 +20,7 @@ const htmlTextConverter = (dataCtx, recipientData) => {
   keys.forEach((key) => {
     variables.push(["<<" + headerRow[key] + ">>", recipientData[0][key]]);
   });
-  let body = dataCtx.body;
+  let body = dataCtx.body + "\n";
   let footer = dataCtx.footer;
   variables.forEach((variable) => {
     body = body.split(variable[0]).join(variable[1]);

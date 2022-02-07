@@ -1,6 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@mui/styles";
+import TextField from "@mui/material/TextField";
 import { useData } from "../../store/data-context";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +31,7 @@ export default function MultilineTextField() {
           style={{ fontSize: "1.3em" }}
           onChange={handleChange}
           margin="normal"
+          variant="standard"
           InputLabelProps={{
             shrink: true,
           }}

@@ -1,0 +1,18 @@
+.tick path,
+.tick polyline {
+  stroke: #79ffa1;
+}
+.fail path,
+.fail polyline {
+  stroke: #ffe779;
+}
+.tick svg {
+  height: 50px;
+  margin: 0;
+}
+.linearProgressSuccess > span {
+  background-color: #79ffa1 !important;
+}
+.linearProgressFailure > span {
+  background-color: #ffe779 !important;
+}

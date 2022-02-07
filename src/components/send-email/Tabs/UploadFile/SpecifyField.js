@@ -1,8 +1,10 @@
-import classes from "./SpecifyFieldModal.module.css";
+import classes from "./SpecifyField.module.css";
 import { useData } from "../../../../store/data-context";
 import { Fragment, useState } from "react";
-const organizeData = (data, primaryKey) => {
+let origSpreadSheet;
+const organizeData = (origData, primaryKey) => {
   const organizedData = [];
+  const data = [...origData];
   organizedData.push(data[0]);
   let key_index = 1;
   for (let i = 2; i < data.length; i++) {
@@ -14,9 +16,12 @@ const organizeData = (data, primaryKey) => {
   organizedData.push(data.slice(key_index, data.length));
   return organizedData;
 };
-const SpecifyFieldModal = (props) => {
+const SpecifyField = () => {
   const dataCtx = useData();
   const header = dataCtx.data.Sheet1 ? dataCtx.data.Sheet1[0] : {};
+  if (!Array.isArray(dataCtx.data.Sheet1.slice(-1)[0])) {
+    origSpreadSheet = dataCtx.data.Sheet1;
+  }
   const headerKeys = Object.keys(header);
   let initialState = ["", "", ""];
   if (headerKeys.length) {
@@ -27,6 +32,7 @@ const SpecifyFieldModal = (props) => {
     ];
   }
   const [primaryKey, setPrimaryKey] = useState(initialState[0]);
+  const [primaryKeyError, setPrimaryKeyError] = useState(false);
   const [nameField, setNameField] = useState(initialState[1]);
   const [emailId, setEmailId] = useState(initialState[2]);
 
@@ -48,9 +54,20 @@ const SpecifyFieldModal = (props) => {
       (key) => header[key] === event.target.value
     )[0];
     dataCtx.saveField({ primaryKey: value });
-    const organizedData = organizeData(dataCtx.data.Sheet1, value);
+    const organizedData = organizeData(origSpreadSheet, value);
     dataCtx.saveData({ Sheet1: organizedData });
     setPrimaryKey(event.target.value);
+    const tmp = [organizedData.slice(1)[0][0][value]];
+    let flag = true;
+    organizedData.slice(2).forEach((recipient) => {
+      if (tmp.includes(recipient[0][value]) && recipient[0][value]) {
+        setPrimaryKeyError(true);
+        flag = false;
+        return;
+      }
+      tmp.push(recipient[0][value]);
+    });
+    if (flag) setPrimaryKeyError(false);
   };
   const emailIdFieldSelectHandler = (event) => {
     const value = headerKeys.filter(
@@ -67,13 +84,21 @@ const SpecifyFieldModal = (props) => {
   };
   return (
     <div className={classes.specifyField}>
+      {primaryKeyError ? (
+        <span className={classes.errorText}>
+          This is not a proper unique identfier column (repeats itself a more
+          than once). Choose a proper unique identifier column to avoid errors.
+        </span>
+      ) : (
+        ""
+      )}
       <div className={classes.dropdown}>
         <label>Choose an unique identifier:</label>
+
         <select value={primaryKey} onChange={primaryKeySelectHandler}>
           {options}
         </select>
       </div>
-
       <div className={classes.dropdown}>
         <label>Choose the name field(optional):</label>
         <select value={nameField} onChange={nameFieldSelectHandler}>

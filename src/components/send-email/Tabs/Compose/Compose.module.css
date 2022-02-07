@@ -80,6 +80,7 @@ label.bodyMessageWrapper {
 
 .bodyMessageTopBar button {
   margin: 0 5px;
+  color: black;
   width: auto;
   font-family: "Urbanist" !important;
   font-weight: 500 !important;
@@ -108,4 +109,7 @@ label.bodyMessageWrapper {
 
 .draft button:hover {
   background-color: rgba(1, 82, 189, 0.74);
+}
+.bodyMessageActions button {
+  color: black;
 }

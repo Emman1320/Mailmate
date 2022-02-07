@@ -1,0 +1,26 @@
+.container {
+  width: 80% !important;
+  animation: fade 0.6s ease-in-out forwards;
+  margin: auto;
+  opacity: 0;
+}
+.container table td,
+.container table th {
+  font-family: "Urbanist", sans-serif !important;
+}
+.container table td {
+  border-bottom: 0.8px solid rgba(224, 224, 224, 1);
+  border-bottom: 0.8px solid rgba(224, 224, 224, 1);
+}
+.container table td > .circle {
+  padding-left: 2px;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

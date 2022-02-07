@@ -1,13 +1,13 @@
 import classes from "./RecipientCard.module.css";
-import { Card } from "@material-ui/core";
+import { Card } from "@mui/material";
 import { useData } from "../../../../store/data-context";
 import { TextCompiler } from "../../../lib/TextCompiler";
-import Table from "../Compose/AddTable/Table";
+import Table from "./Table/Table";
 
 const RecipientCard = (props) => {
   const dataCtx = useData();
   const recipient = props.recipient[0];
-  const body = TextCompiler(dataCtx.body, recipient);
+  const body = TextCompiler(dataCtx.body + "\n", recipient);
   const footer = TextCompiler(dataCtx.footer, recipient);
   const subject = TextCompiler(dataCtx.subject, recipient);
 
@@ -21,7 +21,7 @@ const RecipientCard = (props) => {
         {dataCtx.subject ? subject : "(no subject)"}
       </div>
       <div className={classes.body}>
-        {body}
+        {dataCtx.body ? body : dataCtx.showTable ? "" : "(no body)"}
         {dataCtx.showTable && <Table {...props} />}
         {dataCtx.footer && footer}
       </div>

@@ -1,6 +1,4 @@
-.container {
-    width: 100%;
-}
+
 .circ {
   stroke-dasharray: 130;
   animation: circle-animation 1s ease-in-out;

@@ -1,8 +1,9 @@
 import classes from "./Compose.module.css";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { useData } from "../../../../store/data-context";
-import { TextareaAutosize, Card } from "@material-ui/core";
-import MaterialButton from "@material-ui/core/Button";
+import { TextareaAutosize, Card } from "@mui/material";
+import MaterialButton from "@mui/material/Button";
+
 import MultilineTextField from "../../../UI/TextField";
 import AddTable from "./AddTable/Table";
 import SimpleMenu from "../../../UI/SimpleMenu";
@@ -133,6 +134,38 @@ const Compose = () => {
   const blurHandler = (event) => {
     setCaretPosition(event.target.selectionStart);
   };
+  //   const saveDraftHandler =async () => { const response = await fetch(
+  //     "http://localhost:5001/mail-mate/us-central1/api",
+  //     {
+  //       method: "GET",
+  //       // body: JSON.stringify({
+  //       //   draft: [
+  //       //     {
+  //       //       date: new Date(),
+  //       //       fields: {
+  //       //         primaryKey: "A",
+  //       //         nameField: "B",
+  //       //         emailField: "C",
+  //       //       },
+  //       //       neglectedEmails: [],
+  //       //       subject: "Subject",
+  //       //       body: "Body",
+  //       //       footer: "",
+  //       //       tableStyle: {
+  //       //         background: "white",
+  //       //         header: { border: "1px solid black", color: "black" },
+  //       //         body: { border: "1px solid black", color: "black" },
+  //       //       },
+  //       //       showTable: false,
+  //       //     },
+  //       //   ],
+  //       // }),
+  //       // headers: { "Content-Type": "application/json" },
+  //     }
+  //   );
+  //   console.log(userDraftsData.draft, data, user.email);
+  //   dispatch(requestActions.saveData(userDraftsData.draft));
+  // };
   return (
     <Fragment>
       <div className={classes.body}>
@@ -146,7 +179,6 @@ const Compose = () => {
             <TableStylesPopper disabled={!showTable} />
           </div>
           <div className={classes.bodyMessageActions}>
-            <MaterialButton>Templates</MaterialButton>
             <SimpleMenu
               onSelectVariable={variablesHandler}
               menu={variablesMenu}
@@ -199,6 +231,9 @@ const Compose = () => {
             ></TextareaAutosize>
           </div>
         </label>
+        {/* <div className={classes.draft}>
+          <Button >Save As Draft</Button>
+        </div> */}
       </div>
     </Fragment>
   );

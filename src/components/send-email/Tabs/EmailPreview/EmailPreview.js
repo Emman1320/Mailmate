@@ -1,9 +1,9 @@
-import { Button, Card, LinearProgress } from "@material-ui/core";
+import { Button, Card, LinearProgress } from "@mui/material";
 import { useData } from "../../../../store/data-context";
 import classes from "./EmailPreview.module.css";
 import { Fragment, useState } from "react";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import RecipientCard from "./RecipientCard";
 import SwipeableViews from "react-swipeable-views";
 
@@ -14,7 +14,7 @@ const EmailPreview = () => {
   const [index, setIndex] = useState(0);
 
   const dataCtx = useData();
-  
+
   if (!dataCtx.data?.Sheet1) {
     return (
       <p className={classes.center}>
@@ -35,7 +35,7 @@ const EmailPreview = () => {
     (recipient) =>
       !dataCtx.neglectEmails.includes(recipient[0][dataCtx.fields.primaryKey])
   );
-  
+
   const emailPreviews = [];
   data.forEach((recipient) => {
     emailPreviews.push(

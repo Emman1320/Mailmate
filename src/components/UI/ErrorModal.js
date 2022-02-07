@@ -1,4 +1,4 @@
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import classes from "./ErrorModal.module.css";
 import { Fragment, useState } from "react";
 import { useData } from "../../store/data-context";

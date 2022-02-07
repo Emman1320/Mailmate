@@ -1,10 +1,13 @@
 .dropdown label {
   font-size: 1.25em;
 }
-
+.errorText {
+  color: red;
+  font-weight: bold;
+}
 .dropdown {
   margin: 1em;
-  margin-bottom: 3em;
+  margin-top: 2em;
   display: flex;
   justify-content: space-between;
   width: 90%;

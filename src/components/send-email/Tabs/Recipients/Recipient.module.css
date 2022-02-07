@@ -2,3 +2,6 @@
   display: flex;
   justify-content: center;
 }
+.container > span {
+  color: #f50057 !important;
+}

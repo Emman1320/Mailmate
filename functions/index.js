@@ -19,49 +19,67 @@ app.get("/", (request, response) => {
 });
 
 // ----------------------------------------------------
-
-app.post("/send-email", (request, response) => {
-  const errorMessages = [];
-  const accessTokenStatus = `${
-    request ? "access token recievied" : "access token is not recievied"
-  }`;
+let errorEmails = [];
+let errorText = "";
+app.post("/send-email", async (request, response) => {
+  const responseMessage = { status: {}, connectionError: false };
   const data = request.body;
-  let createTransporter;
+  let transporter;
   try {
-    createTransporter = () => {
-      const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 465,
-        auth: {
-          type: "OAuth2",
-          user: data.from,
-          accessToken: decodeURIComponent(data._),
-        },
-      });
-      return transporter;
-    };
+    transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      auth: {
+        type: "OAuth2",
+        user: data.from,
+        accessToken: decodeURIComponent(data._),
+      },
+    });
   } catch (error) {
-    errorMessages.push(error);
+    responseMessage.connectionError = true;
+    console.log(error);
   }
-  const sendEmail = (emailOptions) => {
-    createTransporter()
-      .sendMail(emailOptions)
-      .catch((error) => {
-        console.log(error);
-        errorMessages.push(error);
-      });
+
+  const sendEmail = (emailOptions, id) => {
+    transporter.sendMail(emailOptions).catch((error) => {
+      responseMessage.status[id] = {
+        email: emailOptions.to,
+        status: false,
+      };
+      console.log("Error in: " + id);
+      errorText = error.toString().slice(0, 100);
+      if (emailOptions.to.includes("@")) errorEmails.push({ emailOptions, id });
+      return;
+    });
+
+    responseMessage.status[id] = {
+      email: emailOptions.to,
+      status: true,
+    };
   };
   data.mailData.forEach((recipient) => {
-    sendEmail({
-      subject: data.subject,
-      to: recipient.to,
-      from: data.from,
-      html: recipient.html,
-    });
+    try {
+      sendEmail(
+        {
+          subject: data.subject,
+          to: recipient.to,
+          from: data.from,
+          html: recipient.html,
+        },
+        recipient.id
+      );
+    } catch (error) {
+      console.log("Error!!");
+    }
   });
-  response.status(200).send({ errorMessages, accessTokenStatus });
+  response.status(200).send({ responseMessage });
 });
-
+app.get("/error-mail", (request, response) => {
+  const temp = [...errorEmails];
+  const tempText = errorText;
+  errorEmails = [];
+  response.status(200).send({ errorEmails: temp, errorText: tempText });
+});
 exports.api = functions.https.onRequest(app);
 
 // http://localhost:5001/mail-mate/us-central1/api

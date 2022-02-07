@@ -63,7 +63,7 @@ const SignUp = () => {
   };
   return (
     <div className={classes.container}>
-      <Link href="/dashboard">
+      <Link to="/dashboard">
         <div className={`${classes.logo} ${classes["margin-top"]}`}>
           <div>Mailmate</div>
         </div>
@@ -79,7 +79,7 @@ const SignUp = () => {
             <input
               spellCheck="false"
               type="text"
-              className={emailHasError && classes.invalid}
+              className={emailHasError ? classes.invalid : ""}
               value={emailValue}
               onChange={emailChangeHandler}
               onBlur={emailBlurHandler}
@@ -96,7 +96,7 @@ const SignUp = () => {
             <input
               spellCheck="false"
               type="password"
-              className={passwordHasError && classes.invalid}
+              className={passwordHasError ? classes.invalid : ""}
               value={passwordValue}
               onChange={passwordChangeHandler}
               onBlur={passwordBlurHandler}

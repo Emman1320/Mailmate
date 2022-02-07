@@ -6,7 +6,7 @@
 .tabs button {
   font-family: "Urbanist", sans-serif !important;
   text-decoration: none;
-  color: white;
+  color: white !important;
   opacity: 1;
   width: 20%;
 }

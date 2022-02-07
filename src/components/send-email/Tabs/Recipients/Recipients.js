@@ -24,8 +24,7 @@ const Recipients = () => {
   }
   const headerRow = data.Sheet1[0];
   const tableBody = data.Sheet1.slice(1);
-  const tableBodyOverflow = tableBody.length > 10;
-
+  const tableBodyOverflow = tableBody.length >= 9;
   return (
     <Fragment>
       <div

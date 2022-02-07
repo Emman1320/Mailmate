@@ -1,31 +1,32 @@
 .table thead th {
-  text-align: left;
-  transition: all 0.2s ease-in-out;
-}
-
-.table table {
-  background-color: white;
-  width: 85%;
-  padding-top: 1em;
-  border-spacing: 1px;
-  border-collapse: collapse;
-}
-
-.table td,
-.table th {
-  border: 1px solid #ddd;
-  transition: all 0.2s ease-in-out;
-  padding: 8px;
-}
-
-.table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: rgb(0, 211, 148);
-  color: white;
-}
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .table table {
+    background-color: white;
+    width: 85%;
+    padding-top: 1em;
+    border-spacing: 1px;
+    border-collapse: collapse;
+  }
+  
+  .table td,
+  .table th {
+    border: 1px solid #ddd;
+    transition: all 0.2s ease-in-out;
+    padding: 8px;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(0, 211, 148);
+    color: white;
+  }
+  

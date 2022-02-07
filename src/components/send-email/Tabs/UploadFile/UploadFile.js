@@ -1,12 +1,12 @@
-import classes from "./Sender.module.css";
+import classes from "./UploadFile.module.css";
 import excelToJson from "../../../lib/excelToJson";
 import { useData } from "../../../../store/data-context";
-import SpecifyFieldModal from "./SpecifyFieldModal";
+import SpecifyFieldModal from "./SpecifyField";
 import { Fragment } from "react";
 import TickAnimation from "../../../UI/TickAnimation";
 import ErrorModal from "../../../UI/ErrorModal";
 
-const Sender = () => {
+const UploadFile = () => {
   const dataCtx = useData();
 
   const convertExcelToObject = (file) => {
@@ -34,35 +34,9 @@ const Sender = () => {
     event.preventDefault();
   };
 
-  // const closeModalHandler = () => {
-  //   setShowModal(false);
-  //   localStorage.setItem("showButton", true);
-  //   setShowButton(true);
-  // };
-  // const showModalHandler = () => {
-  //   setShowModal(true);
-  // };
-
   const closeErrorModalHandler = () => {
     dataCtx.showError({ hasError: false });
   };
-  // const onNextHandler = () => {
-  //   if (!dataCtx.data.Sheet1) {
-  //     dataCtx.showError({
-  //       hasError: true,
-  //       errorTitle: "Please upload your excel file",
-  //       errorMessage: "No excel file found",
-  //     });
-  //   } else if (dataCtx.sender === "") {
-  //     dataCtx.showError({
-  //       hasError: true,
-  //       errorTitle: "Select the sender",
-  //       errorMessage: "Sender field is empty",
-  //     });
-  //   } else {
-  //     history.push("/send-email/recipients");
-  //   }
-  // };
 
   const tickStateRender = <TickAnimation className={classes.marginTop} />; // Appears right after uploading
 
@@ -119,4 +93,4 @@ const Sender = () => {
   );
 };
 
-export default Sender;
+export default UploadFile;

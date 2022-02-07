@@ -1,31 +1,33 @@
 import classes from "./Layout.module.css";
-import HouseIcon from "@material-ui/icons/House";
-import ChromeReaderModeOutlinedIcon from "@material-ui/icons/ChromeReaderModeOutlined";
-import EmailIcon from "@material-ui/icons/Email";
+import HouseIcon from "@mui/icons-material/House";
+// import ChromeReaderModeOutlinedIcon from "@mui/icons-material/ChromeReaderModeOutlined";
+import EmailIcon from "@mui/icons-material/Email";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 const Layout = (props) => {
   const { pathname } = useLocation();
- 
+  const style = { height: `${pathname === "/dashboard" ? "700%" : "auto"}` };
   return (
     <div className={classes.home}>
-      <div className={classes.sidebar}>
+      <div className={classes.sidebar} style={style}>
         <NavLink to="/dashboard">
           <div className={pathname === "/dashboard" ? classes.active : ""}>
             <HouseIcon />
             <span>Dashboard</span>
           </div>
         </NavLink>
-        <NavLink to="/drafts">
+        {/* <NavLink to="/drafts">
           <div className={pathname === "/drafts" ? classes.active : ""}>
             <ChromeReaderModeOutlinedIcon />
             <span>Drafts</span>
           </div>
-        </NavLink>
+        </NavLink> */}
         <NavLink to="/send-email/upload-file">
           <div
-            className={pathname === "/send-email/upload-file" ? classes.active : ""}
+            className={
+              pathname === "/send-email/upload-file" ? classes.active : ""
+            }
           >
             <EmailIcon />
             <span>Send Email</span>

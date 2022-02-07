@@ -1,5 +1,5 @@
 import classes from "./SendEmailNavBar.module.css";
-import { AppBar, Tab, Tabs } from "@material-ui/core";
+import { AppBar, Tab, Tabs } from "@mui/material";
 import { useHistory } from "react-router-dom";
 
 function a11yProps(index) {
@@ -16,20 +16,6 @@ const SendEmailNavBar = ({ value, onTabChangeHandler, tabList }) => {
     history.push(tabList[newValue]);
   };
   
-  // useEffect(() => {
-  //   return history.listen((location) => {
-  //     console.log(`You changed the page to: ${location.pathname}`);
-  //     const tab = location.pathname.split("/send-email/")[1];
-  //     // let dataToBeUploaded = {};
-
-  //     switch (tab) {
-  //       case "upload-file":
-  //         break;
-  //       default:
-  //         console.log("Wrong tab!!");
-  //     }
-  //   });
-  // }, [history]);
   return (
     <AppBar
       style={{ backgroundColor: "rgb(1 82 189 / 88%)", zIndex: "0" }}
