@@ -26,8 +26,7 @@ const SendEmail = () => {
   const handleResponse = (response) => {};
   const { signOut, loaded } = useGoogleLogout({
     scope: "https://mail.google.com/",
-    clientId:
-      "159826717198-a6ujec4123jvtn3tg916733f8fjk2k67.apps.googleusercontent.com",
+    clientId: "CLIENT_ID",
     cookiePolicy: "single_host_origin",
     onSuccess: { handleResponse },
   });
@@ -198,10 +197,7 @@ const SendEmail = () => {
         return { ...prevStatus, ...statData };
       });
       statData = { ...statusData, ...statData };
-      // setStatus("failure");
-      // setTimeout(async () => {
       await sendAgainHandler(statData);
-      // }, [3000]);
     }, [Math.floor(mailData.length / 4) * 1000]);
   };
 
@@ -254,7 +250,7 @@ const SendEmail = () => {
               icon=""
               className={classes.sendEmailButton}
               scope="https://mail.google.com/"
-              clientId="159826717198-a6ujec4123jvtn3tg916733f8fjk2k67.apps.googleusercontent.com"
+              clientId="CLIENT_ID"
               buttonText="Send email"
               cookiePolicy={"single-host-orgin"}
               onSuccess={sendEmailResponseHandler}
