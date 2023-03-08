@@ -1,0 +1,57 @@
+.tab {
+  position: relative;
+  height: 2.2em;
+  flex: 1;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid #5e5e5e;
+  background-color: rgba(85, 85, 85, 0.294);
+  box-shadow: 0px 1px 7px rgb(0 0 0 / 26%);
+  border-radius: 10px 10px 0 0;
+  font-size: 1.1em;
+}
+
+.bottomOttuContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: whitesmoke;
+  z-index: 100;
+  height: 0.2em;
+  left: 0px;
+  top: 4.8px;
+  width: 100%;
+}
+
+.bottomOttu {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 235, 164);
+  animation: bottomOttu 0.2s ease-in-out;
+}
+.title {
+  text-align: center;
+  margin-top: 0.4em;
+  color: rgb(80, 80, 80);
+}
+
+.active.tab {
+  background-color: whitesmoke;
+  border-bottom: 0px solid #5e5e5e;
+  overflow: visible;
+  z-index: 1;
+}
+
+@keyframes bottomOttu {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@media (min-width: 1367px) {
+  .bottomOttuContainer {
+    width: 100.2%;
+  }
+}
