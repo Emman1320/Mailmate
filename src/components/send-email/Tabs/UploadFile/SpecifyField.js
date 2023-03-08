@@ -116,4 +116,4 @@ const SpecifyField = () => {
   );
 };
 
-export default SpecifyFieldModal;
+export default SpecifyField;

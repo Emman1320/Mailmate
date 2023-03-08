@@ -13,7 +13,6 @@ import FullScreenDialog from "./FullDialog";
 const isEmpty = (text) => {
   return text === "";
 };
-
 const SendEmail = () => {
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +25,7 @@ const SendEmail = () => {
   const handleResponse = (response) => {};
   const { signOut, loaded } = useGoogleLogout({
     scope: "https://mail.google.com/",
-    clientId: "CLIENT_ID",
+    clientId: process.env.REACT_APP_CLIENT_ID,
     cookiePolicy: "single_host_origin",
     onSuccess: { handleResponse },
   });
@@ -50,6 +49,7 @@ const SendEmail = () => {
 
   const sendEmailResponseHandler = (response) => {
     //  confirming the email
+    console.log(response);
     try {
       if (response) {
         dataCtx.showError({
@@ -250,7 +250,7 @@ const SendEmail = () => {
               icon=""
               className={classes.sendEmailButton}
               scope="https://mail.google.com/"
-              clientId="CLIENT_ID"
+              clientId={process.env.REACT_APP_CLIENT_ID}
               buttonText="Send email"
               cookiePolicy={"single-host-orgin"}
               onSuccess={sendEmailResponseHandler}
