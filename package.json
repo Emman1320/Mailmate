@@ -24,8 +24,7 @@
     "xlsx": "^0.17.1"
   },
   "scripts": {
-    "start": "npm run start",
-    "build": "npm run build"
+    "start": "npm run start"  
   },
   "eslintConfig": {
     "extends": [
