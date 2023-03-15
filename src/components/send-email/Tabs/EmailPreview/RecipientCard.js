@@ -10,7 +10,6 @@ const RecipientCard = (props) => {
   const body = TextCompiler(dataCtx.body + "\n", recipient);
   const footer = TextCompiler(dataCtx.footer, recipient);
   const subject = TextCompiler(dataCtx.subject, recipient);
-
   return (
     <Card className={classes.card} elevation={2}>
       <div className={classes.toAddress}>
@@ -18,12 +17,24 @@ const RecipientCard = (props) => {
         {props.recipient[0][dataCtx.fields.emailIdField]}
       </div>
       <div className={classes.subject}>
-        {dataCtx.subject ? subject : "(no subject)"}
+        {dataCtx.subject ? (
+          <div dangerouslySetInnerHTML={{ __html: subject }}></div>
+        ) : (
+          "(no subject)"
+        )}
       </div>
       <div className={classes.body}>
-        {dataCtx.body ? body : dataCtx.showTable ? "" : "(no body)"}
+        {dataCtx.body ? (
+          <div dangerouslySetInnerHTML={{ __html: body }}></div>
+        ) : dataCtx.showTable ? (
+          ""
+        ) : (
+          "(no body)"
+        )}
         {dataCtx.showTable && <Table {...props} />}
-        {dataCtx.footer && footer}
+        {dataCtx.footer && (
+          <div dangerouslySetInnerHTML={{ __html: footer }}></div>
+        )}
       </div>
     </Card>
   );

@@ -1,7 +1,11 @@
-const messageToHtmlConverter = (text) => {
+export const messageToHtmlConverter = (text) => {
   let htmlText = "";
+  let startTag = false;
   [...text].forEach((character) => {
-    if (character === " ") htmlText += "&nbsp;";
+    if (character === "<") startTag = true;
+    if (character === ">") startTag = false;
+
+    if (character === " " && !startTag) htmlText += "&nbsp;";
     else if (character === "\n") htmlText += "<br/>";
     else if (character === "\t") htmlText += "&nbsp;&nbsp;&nbsp;&nbsp;";
     else htmlText += character;

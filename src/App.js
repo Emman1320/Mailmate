@@ -14,7 +14,7 @@ import { auth } from "./firebase";
 import { userActions } from "./redux-store/user";
 
 function App() {
-  const dispatch = useDispatch();
+const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -30,6 +30,7 @@ function App() {
   return (
     <Router>
       <Switch>
+        {" "}
         <Route path="/" exact>
           <RedirectToDashboard />
         </Route>

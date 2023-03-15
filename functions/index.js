@@ -1,7 +1,7 @@
+
 /* eslint-disable max-len */
-const functions = require("firebase-functions");
+// const functions = require("firebase-functions");
 const express = require("express");
-// const mongoose = require("mongoose");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 
@@ -46,7 +46,7 @@ app.post("/send-email", async (request, response) => {
         email: emailOptions.to,
         status: false,
       };
-      console.log("Error in: " + id);
+      console.log(id);  
       errorText = error.toString().slice(0, 100);
       if (emailOptions.to.includes("@")) errorEmails.push({ emailOptions, id });
       return;
@@ -58,19 +58,15 @@ app.post("/send-email", async (request, response) => {
     };
   };
   data.mailData.forEach((recipient) => {
-    try {
-      sendEmail(
-        {
-          subject: data.subject,
-          to: recipient.to,
-          from: data.from,
-          html: recipient.html,
-        },
-        recipient.id
-      );
-    } catch (error) {
-      console.log("Error!!");
-    }
+    sendEmail(
+      {
+        subject: data.subject,
+        to: recipient.to,
+        from: data.from,
+        html: recipient.html,
+      },
+      recipient.id
+    );
   });
   response.status(200).send({ responseMessage });
 });
@@ -80,6 +76,14 @@ app.get("/error-mail", (request, response) => {
   errorEmails = [];
   response.status(200).send({ errorEmails: temp, errorText: tempText });
 });
-exports.api = functions.https.onRequest(app);
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
+app.listen(port, () => {
+  console.log("Listening to 8080...");
+});
+// exports.api = functions.https.onRequest(app);
 
 // http://localhost:5001/mail-mate/us-central1/api

@@ -10,7 +10,7 @@
 /coverage
 
 # production
-/build
+# /build
 
 # misc
 .DS_Store
@@ -19,6 +19,9 @@
 .env.test.local
 .env.production.local
 /functions
+/flask/credentials.json
+/flask/token.json
+/misc
 
 npm-debug.log*
 yarn-debug.log*

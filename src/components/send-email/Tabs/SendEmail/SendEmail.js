@@ -22,13 +22,13 @@ const SendEmail = () => {
   const [statusData, setStatusData] = useState({});
   const dataCtx = useData();
 
-  const handleResponse = (response) => {};
-  const { signOut, loaded } = useGoogleLogout({
-    scope: "https://mail.google.com/",
-    clientId: process.env.REACT_APP_CLIENT_ID,
-    cookiePolicy: "single_host_origin",
-    onSuccess: { handleResponse },
-  });
+  // const handleResponse = (response) => {};
+  // const { signOut, loaded } = useGoogleLogout({
+  //   scope: "https://mail.google.com/",
+  //   clientId: process.env.REACT_APP_CLIENT_ID,
+  //   cookiePolicy: "single_host_origin",
+  //   onSuccess: { handleResponse },
+  // });
   if (!dataCtx.data?.Sheet1) {
     // Error handling
     return (
@@ -47,28 +47,35 @@ const SendEmail = () => {
     );
   }
 
-  const sendEmailResponseHandler = (response) => {
+  const authorizeUserHandler = async () => {
+    const response = await instance({
+      method: "GET",
+      url: "/authorize",
+    }).catch((error) => {
+      console.log(error);
+    });
+    await closeErrorModalHandler();
     //  confirming the email
-    console.log(response);
-    try {
-      if (response) {
-        dataCtx.showError({
-          hasError: true,
-          errorTitle: "Confirm your email",
-          errorMessage: `You are sending your mail from ${response.profileObj.email}`,
-        });
-        setSenderEmail(response.profileObj.email);
-        setLoginResponse(response);
-      }
-    } catch (error) {
-      dataCtx.showError({
-        hasError: true,
-        errorTitle: "Error",
-        errorMessage:
-          "Sorry, could't process the request due to some inconvenience",
-      });
-    }
-    signOut();
+    // console.log(response);
+    // try {
+    //   if (response) {
+    //     dataCtx.showError({
+    //       hasError: true,
+    //       errorTitle: "Confirm your email",
+    //       errorMessage: `You are sending your mail from ${response.profileObj.email}`,
+    //     });
+    //     setSenderEmail(response.profileObj.email);
+    //     setLoginResponse(response);
+    //   }
+    // } catch (error) {
+    //   dataCtx.showError({
+    //     hasError: true,
+    //     errorTitle: "Error",
+    //     errorMessage:
+    //       "Sorry, could't process the request due to some inconvenience",
+    //   });
+    // }
+    // signOut();
   };
   const closeErrorModalHandler = async () => {
     // send email on pressing confirm
@@ -81,6 +88,7 @@ const SendEmail = () => {
             recipient[0][dataCtx.fields.primaryKey]
           )
       );
+
       await sendEmailHandler(data); // sending email
       dataCtx.showError({ hasError: false });
     } catch (error) {}
@@ -90,17 +98,20 @@ const SendEmail = () => {
     //sending request to backend
     const response = await instance({
       method: "POST",
-      url: "/send-email",
+      url: "/sendmessage",
       data: {
-        _: encodeURIComponent(loginResponse.accessToken),
-        mailData: data,
+        // _: encodeURIComponent(loginResponse.accessToken),
+        messages: data,
         subject: dataCtx.subject,
-        from: senderEmail,
+        // from: senderEmail,
+        from: "emmanueldavid1320@gmail.com",
       },
+    }).catch((error) => {
+      console.log(error);
     });
-    statData = { ...statData, ...response.data.responseMessage.status };
+    // statData = { ...statData, ...response.data.status };
     setStatusData((prevStatus) => {
-      return { ...prevStatus, ...response.data.responseMessage.status };
+      return { ...prevStatus, ...response.data.status };
     });
     return statData;
   };
@@ -133,10 +144,10 @@ const SendEmail = () => {
         }
     }
     if (!unsentMailKeyArray.length) {
-      setStatus("requested");
+      setStatus("success");
       return;
     }
-
+    setError(true);
     setStatus("failure");
   };
 
@@ -159,49 +170,49 @@ const SendEmail = () => {
     setStatusData((prevStatus) => {
       return { ...prevStatus, ...statData };
     });
-    if (!loginResponse.error) {
-      await divideAndSend(statData, mailData);
-    }
-    setTimeout(async () => {
-      const errRes = await instance({
-        method: "GET",
-        url: "/error-mail",
-      });
-      let statData = {};
-      const errorEmails = errRes.data.errorEmails;
-      if (
-        errRes.data.errorText.includes("Can't create new access token for user")
-      ) {
-        setError(true);
-        setStatus("failure");
-        return;
-      }
-      errorEmails.forEach((e) => {
-        statData[e.id] = { email: e.emailOptions.to, status: false };
-      });
-      if (!errorEmails.length) {
-        let flag = true;
-        const keys = Object.keys(statData);
-        for (let i = 0; i < keys.length; i++) {
-          if (!statData[keys[i]].status) {
-            flag = false;
-            break;
-          }
-        }
-        if (flag) {
-          setStatus("success");
-          return;
-        } else setStatus("failure");
-      }
-      setStatusData((prevStatus) => {
-        return { ...prevStatus, ...statData };
-      });
-      statData = { ...statusData, ...statData };
-      await sendAgainHandler(statData);
-    }, [Math.floor(mailData.length / 4) * 1000]);
+    // if (!loginResponse.error) {
+    await divideAndSend(statData, mailData);
+    // }
+    // setTimeout(async () => {
+    //   const errRes = await instance({
+    //     method: "GET",
+    //     url: "/error-mail",
+    //   });
+    //   let statData = {};
+    //   const errorEmails = errRes.data.errorEmails;
+    //   if (
+    //     errRes.data.errorText.includes("Can't create new access token for user")
+    //   ) {
+    //     setError(true);
+    //     setStatus("failure");
+    //     return;
+    //   }
+    //   errorEmails.forEach((e) => {
+    //     statData[e.id] = { email: e.emailOptions.to, status: false };
+    //   });
+    //   if (!errorEmails.length) {
+    //     let flag = true;
+    //     const keys = Object.keys(statData);
+    //     for (let i = 0; i < keys.length; i++) {
+    //       if (!statData[keys[i]].status) {
+    //         flag = false;
+    //         break;
+    //       }
+    //     }
+    //     if (flag) {
+    //       setStatus("success");
+    //       return;
+    //     } else setStatus("failure");
+    //   }
+    //   setStatusData((prevStatus) => {
+    //     return { ...prevStatus, ...statData };
+    //   });
+    //   statData = { ...statusData, ...statData };
+    //   await sendAgainHandler(statData);
+    // }, [Math.floor(mailData.length / 4) * 1000]);
   };
 
-  const sendAgainHandler = async (statusData) => {
+  const sendAgainHandler = async () => {
     const keys = Object.keys(statusData);
     setStatus("sending");
     let unsentMailKeyArray = [];
@@ -217,8 +228,8 @@ const SendEmail = () => {
     });
     await sendEmailHandler(data);
   };
-  const sendAgainButtonHandler = () => {
-    sendAgainHandler();
+  const sendAgainButtonHandler = async () => {
+    await sendAgainHandler();
   };
   const closeFullDialogHandler = () => {
     setDialogOpen(false);
@@ -239,7 +250,7 @@ const SendEmail = () => {
         />
       )}
       <div className={classes.sendEmail}>
-        {!loaded ? (
+        {/* {!loaded ? (
           <div style={{ display: "flex", alignItems: "center" }}>
             <CircularProgress />
             <span style={{ marginLeft: "10px" }}>Please wait</span>
@@ -253,10 +264,11 @@ const SendEmail = () => {
               clientId={process.env.REACT_APP_CLIENT_ID}
               buttonText="Send email"
               cookiePolicy={"single-host-orgin"}
-              onSuccess={sendEmailResponseHandler}
+              onSuccess={authorizeUserHandler}
             />
           </Button>
-        )}
+        )} */}
+        <Button onClick={authorizeUserHandler}>Send Email</Button>
       </div>
 
       <FullScreenDialog open={dialogOpen} handleClose={closeFullDialogHandler}>
@@ -273,23 +285,23 @@ const SendEmail = () => {
               marginTop: "10px",
             }}
           >
-            {!loaded ? (
+            {/* {!loaded ? (
               <div style={{ display: "flex", alignItems: "center" }}>
                 <CircularProgress />
                 <span style={{ marginLeft: "10px" }}>Please wait</span>
               </div>
-            ) : (
-              <Fragment>
-                (Access token error) Better try again with a different email Id
-                or click and try sending to the failed recipients &nbsp;
-                <Button
-                  onClick={sendAgainButtonHandler}
-                  style={{ textTransform: "lower-case", boxShadow: "" }}
-                >
-                  Send Again
-                </Button>
-              </Fragment>
-            )}
+            ) : ( */}
+            <Fragment>
+              (Access token error) Better try again with a different email Id or
+              click and try sending to the failed recipients &nbsp;
+              <Button
+                onClick={sendAgainButtonHandler}
+                style={{ textTransform: "lower-case", boxShadow: "" }}
+              >
+                Send Again
+              </Button>
+            </Fragment>
+            {/* )} */}
           </div>
         ) : (
           ""

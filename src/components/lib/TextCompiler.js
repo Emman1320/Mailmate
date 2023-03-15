@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { useData } from "../../store/data-context";
+import { messageToHtmlConverter } from "../send-email/Tabs/SendEmail/htmlTextConverter";
 
 export const TextCompiler = (text, data) => {
   const dataCtx = useData();
@@ -9,18 +10,21 @@ export const TextCompiler = (text, data) => {
   variables.forEach((variable) => {
     text = text.split(variable[0]).join(variable[1]);
   });
-  text = (
-    <div>
-      {[...text].map((character) => {
-        if (character === " ") {
-          return <Fragment>&nbsp;</Fragment>;
-        }
-        if (character === "\n") {
-          return <br />;
-        }
-        return character;
-      })}
-    </div>
-  );
+
+  // text = (
+  //   <div>
+  //     {[...text].map((character) => {
+  //       if (character === " ") {
+  //         return <Fragment>&nbsp;</Fragment>;
+  //       }
+  //       if (character === "\n") {
+  //         return <br />;
+  //       }
+  //       return character;
+  //     })}
+  //   </div>
+  // );
+  
+  text = messageToHtmlConverter(text);
   return text;
 };

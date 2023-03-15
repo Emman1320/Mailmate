@@ -1,1 +1,2 @@
-firebase emulators:start
+cd flask
+python app.py 
